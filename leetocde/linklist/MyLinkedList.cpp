@@ -13,35 +13,32 @@ public:
 
     int get(int index) {
         MyLinkedList *tmp = head;
+        int count = 0;
         while(tmp) {
-            int count = 0;
-            if (tmp) {
-                if (index == count) {
-                    return tmp->data;
-                } else {
-                    tmp = tmp->next;
-                    count++;
-                }
+            if (index == count) {
+                return tmp->data;
+            } else {
+                tmp = tmp->next;
+                count++;
             }
         }
         return -1;
     }
     void addAtHead(int val) {
-        MyLinkedList *new_node = new MyLinkedList;
-        new_node->data = val;
-        new_node->next = head;
-        head = new_node;
+        MyLinkedList *tmp = new MyLinkedList();
+        tmp->data = val;
+        tmp->next = head;
+        head = tmp;
     }
     
     /** Append a node of value val to the last element of the linked list. */
     void addAtTail(int val) {
-        MyLinkedList *new_node = new MyLinkedList;
+        MyLinkedList *new_node = new MyLinkedList();
         new_node->data = val;
-        if (!head) {
-            head = new_node;
-        } else {
+        if (!head) head = new_node;
+        else {
             MyLinkedList *tmp = head;
-            while(tmp->next) {
+            while(tmp) {
                 tmp = tmp->next;
             }
             tmp->next = new_node;
@@ -52,14 +49,30 @@ public:
     void addAtIndex(int index, int val) {
         MyLinkedList *tmp = head;
         while (index--) {
-        
+            tmp = tmp->next;
         }
+        MyLinkedList *new_node;
+        new_node->data = val;
+        new_node->next = tmp->next;
+        tmp = new_node;
     }
     
-    /** Delete the index-th node in the linked list, if the index is valid. */
     void deleteAtIndex(int index) {
         
     }
 
 
 };
+
+
+
+
+
+
+int main() {
+
+
+
+
+    return 0;
+}
