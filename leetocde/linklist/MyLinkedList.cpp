@@ -47,18 +47,56 @@ public:
     
     /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
     void addAtIndex(int index, int val) {
+        int len = 0;
+        int count = 0;
         MyLinkedList *tmp = head;
-        while (index--) {
+        while(tmp) {
             tmp = tmp->next;
+            len++;
         }
-        MyLinkedList *new_node;
+        if (index > len) return;
+        if (index == 0) {
+            addAtHead(val);
+            return;
+        }
+        if (index == len) {
+            addAtTail(val);
+            return;
+        }
+        tmp = head;
+        while(tmp && count < len - 1) {
+            tmp = tmp->next;
+            count++;
+        }
+        MyLinkedList *new_node = new MyLinkedList();
         new_node->data = val;
-        new_node->next = tmp->next;
-        tmp = new_node;
+        MyLinkedList *end = tmp->next;
+        tmp->next = new_node;
+        new_node->next = end;
     }
     
     void deleteAtIndex(int index) {
-        
+        int len = 0;
+        int count = 0;
+        MyLinkedList *tmp = head;
+        while(tmp) {
+            tmp = tmp->next;
+            len++;
+        }
+        if (index >= len) return;
+        if (index == 0) {
+            if (head) {
+                head->next = head;
+            }
+            return;
+        }
+        tmp = head;
+        while (tmp && count < index - 1) {
+            tmp = tmp->next;
+            count++;
+        }
+        tmp->next = tmp->next->next;
+
     }
 
 
