@@ -59,4 +59,3 @@ int main() {
     swapNodes(indexes, queries);
     return 0;
 }
-

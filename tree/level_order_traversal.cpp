@@ -17,15 +17,6 @@ struct Node {
 
 
 
-
-
-
-
-
-
-
-
-
 Node* newNode(int key) {
     Node* node = new Node();
     node->left = node->right = NULL;
